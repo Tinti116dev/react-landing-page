@@ -1,12 +1,13 @@
+// src/components/Footer.jsx
 import React from "react";
 import {
   FaFacebookF,
   FaXTwitter,
   FaWhatsapp,
   FaLinkedinIn,
-} from "react-icons/fa6"; // Make sure to install react-icons
+} from "react-icons/fa6";
 
-function Footer() {
+function Footer({ onOpenCookieModal }) {
   return (
     <footer className="bg-black text-gray-300 pt-12 pb-6">
       <div className="max-w-7xl mx-auto px-6">
@@ -15,11 +16,7 @@ function Footer() {
           {/* Left: Logo + Tagline */}
           <div>
             <div className="flex items-center mb-4">
-              <img
-                src="/logo.png"
-                alt="UnHack Logo"
-                className="h-10 mr-2"
-              />
+              <img src="/logo.png" alt="UnHack Logo" className="h-10 mr-2" />
             </div>
             <p className="text-white font-medium">
               Ready for always-on cyber defense?
@@ -30,13 +27,13 @@ function Footer() {
 
           {/* Center: Social Media */}
           <div className="flex justify-center space-x-6 text-white">
-            <a href="#" className="hover:text-blue-400">
+            <a href="https://www.facebook.com/profile.php?id=61580287678230" className="hover:text-blue-400">
               <FaFacebookF size={20} />
             </a>
-            <a href="#" className="hover:text-blue-400">
+            <a href="https://x.com/UnHack_Africa" className="hover:text-white">
               <FaXTwitter size={20} />
             </a>
-            <a href="#" className="hover:text-blue-400">
+            <a href="+263783269827" className="hover:text-green-400">
               <FaWhatsapp size={20} />
             </a>
             <a href="#" className="hover:text-blue-400">
@@ -64,12 +61,21 @@ function Footer() {
         {/* Bottom Section */}
         <div className="border-t border-gray-700 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
           <div className="flex space-x-6 mb-4 md:mb-0">
-            <a href="#" className="hover:text-blue-400">
+            <a href="/privacy-policy" className="hover:text-blue-400">
               Privacy Policy
             </a>
-            <a href="#" className="hover:text-blue-400">
-              Cookie Preferences
-            </a>
+            {/* Call the function passed down */}
+<a
+  href="/cookie-preference"
+  onClick={(e) => {
+    e.preventDefault();
+    if (typeof onOpenCookieModal === "function") onOpenCookieModal();
+  }}
+  className="hover:text-blue-400"
+>
+  Cookie Preferences
+</a>
+
           </div>
           <p>© {new Date().getFullYear()} UnHack. All rights reserved.</p>
         </div>

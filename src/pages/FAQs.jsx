@@ -5,12 +5,12 @@ import backgroundImg from "../assets/images/Picture4.png"; // adjust path to you
 
 const faqs = [
   {
-    question: "What is UniStack SOCaaS?",
+    question: "What is UnHack SOCaaS?",
     answer:
-      "UniStack SOCaaS is a managed Security Operations Center service that provides 24/7 threat monitoring, detection, and response to protect your business from cyberattacks.",
+      "UnHack SOCaaS is a managed Security Operations Center service that provides 24/7 threat monitoring, detection, and response to protect your business from cyberattacks.",
   },
   {
-    question: "How does UniStack monitor threats?",
+    question: "How does UnHack monitor threats?",
     answer:
       "We use advanced analytics, AI, and threat intelligence feeds to continuously monitor your network, endpoints, and cloud environments in real time.",
   },
@@ -40,7 +40,7 @@ const faqs = [
       "Response times are aligned with your service level agreement (SLA), typically within minutes of detection, ensuring fast containment and mitigation.",
   },
   {
-    question: "Can UniStack SOCaaS help with compliance requirements?",
+    question: "Can UnHack SOCaaS help with compliance requirements?",
     answer:
       "Yes, our services support adherence to global and regional compliance standards such as GDPR, POPIA, PCI-DSS, and others.",
   },
@@ -50,7 +50,7 @@ const faqs = [
       "Onboarding involves integration with your IT environment, baseline tuning, and staff training, usually completed within 2–4 weeks.",
   },
   {
-    question: "How do I get started with UniStack SOCaaS?",
+    question: "How do I get started with UnHack SOCaaS?",
     answer:
       "Contact us through our website or sales team for a personalized consultation and demo.",
   },
@@ -64,20 +64,20 @@ export default function FAQs() {
   };
 
   return (
-    <div
-      className="bg-black bg-opacity-90 text-white py-20 px-6"
-      style={{
-        backgroundImage: `url(${backgroundImg})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
-      <div className="max-w-4xl mx-auto">
+    <div className="relative bg-black text-white py-20 px-6">
+      {/* Background Image with reduced opacity */}
+      <div
+        className="absolute inset-0 bg-cover bg-center opacity-40"
+        style={{ backgroundImage: `url(${backgroundImg})` }}
+      ></div>
+
+      {/* Content */}
+      <div className="relative max-w-4xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold">Frequently Asked Questions</h2>
           <p className="mt-2 text-gray-300">
-            Answers to common questions about UniStack SOCaaS.
+            Answers to common questions about UnHack SOCaaS.
           </p>
         </div>
 
