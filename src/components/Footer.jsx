@@ -6,6 +6,7 @@ import {
   FaWhatsapp,
   FaLinkedinIn,
 } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 function Footer({ onOpenCookieModal }) {
   return (
@@ -61,9 +62,9 @@ function Footer({ onOpenCookieModal }) {
         {/* Bottom Section */}
         <div className="border-t border-gray-700 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
           <div className="flex space-x-6 mb-4 md:mb-0">
-            <a href="/privacy-policy" className="hover:text-blue-400">
-              Privacy Policy
-            </a>
+            <Link to="/privacy-policy" className="hover:text-blue-400">
+  Privacy Policy
+</Link>
             {/* Call the function passed down */}
 <a
   href="/cookie-preference"
