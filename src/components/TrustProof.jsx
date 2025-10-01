@@ -36,18 +36,7 @@ function TrustProof() {
   ];
 
   return (
-    <section id="trust-proof" className="relative py-24 bg-black text-white overflow-hidden">
-      {/* Background Image */}
-      <div className="absolute inset-0">
-        <img
-          src="/src/assets/images/img00001.jpg"
-          alt="Background"
-          className="w-full h-full object-cover opacity-80"
-        />
-        {/* Dark overlay */}
-        <div className="absolute inset-0 bg-black/70"></div>
-      </div>
-
+    <section className="pt-28 pb-16 text-white">
       {/* Foreground Content */}
       <div className="relative max-w-7xl mx-auto px-6 text-center">
         {/* Header */}

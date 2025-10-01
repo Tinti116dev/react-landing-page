@@ -74,7 +74,7 @@ function Footer({ onOpenCookieModal }) {
   }}
   className="hover:text-blue-400"
 >
-  Cookie Preferences
+  Cookie Policy
 </a>
 
           </div>

@@ -52,7 +52,7 @@ function Services() {
   ];
 
   return (
-    <section id="services" className="py-24 bg-black text-white">
+    <section className="pt-28 pb-16 text-white">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-16">

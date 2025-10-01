@@ -2,7 +2,7 @@ import React from "react";
 
 function Advantage() {
   return (
-    <section id="advantage" className="py-24 bg-black text-white text-center">
+    <section className="pt-28 pb-16 text-white">
       <div className="max-w-4xl mx-auto px-6">
         {/* Heading */}
         <h2 className="text-4xl font-bold mb-6">Our Advantage</h2>

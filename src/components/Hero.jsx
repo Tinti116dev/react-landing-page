@@ -2,7 +2,8 @@ import dashboardImg from "../assets/images/dashboard.jpg"; // adjust path if nee
 
 function Hero() {
   return (
-    <section id="hero" className="pt-28 pb-16 bg-black text-white">
+    <section id="hero" className="pt-28 pb-16 text-white">
+      {/* removed bg-black */}
       <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
         {/* Left Content */}
         <div>
@@ -21,16 +22,16 @@ function Hero() {
           {/* Buttons */}
           <div className="flex space-x-4">
             <a
-              href="#start"
+              href="/my-landing-page/src/pages/Demo.jsx"
               className="px-5 py-3 bg-blue-600 rounded-lg font-semibold text-white hover:bg-blue-700 transition"
             >
               Request a Demo
             </a>
             <a
-              href="#demo"
+              href="/my-landing-page/src/pages/Features.jsx"
               className="px-5 py-3 bg-blue-600 rounded-lg font-semibold text-white hover:bg-blue-700 transition"
             >
-              Watch Demo
+              Explore Features
             </a>
           </div>
         </div>
