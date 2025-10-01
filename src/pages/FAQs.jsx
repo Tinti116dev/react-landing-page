@@ -5,9 +5,9 @@ import backgroundImg from "../assets/images/Picture4.png"; // adjust path to you
 
 const faqs = [
   {
-    question: "What is UnHack SOCaaS?",
+    question: "What is UnHack?",
     answer:
-      "UnHack SOCaaS is a managed Security Operations Center service that provides 24/7 threat monitoring, detection, and response to protect your business from cyberattacks.",
+      "UnHack is a managed Security Operations Center service that provides 24/7 threat monitoring, detection, and response to protect your business from cyberattacks.",
   },
   {
     question: "How does UnHack monitor threats?",
@@ -40,7 +40,7 @@ const faqs = [
       "Response times are aligned with your service level agreement (SLA), typically within minutes of detection, ensuring fast containment and mitigation.",
   },
   {
-    question: "Can UnHack SOCaaS help with compliance requirements?",
+    question: "Can UnHack help with compliance requirements?",
     answer:
       "Yes, our services support adherence to global and regional compliance standards such as GDPR, POPIA, PCI-DSS, and others.",
   },
@@ -50,7 +50,7 @@ const faqs = [
       "Onboarding involves integration with your IT environment, baseline tuning, and staff training, usually completed within 2–4 weeks.",
   },
   {
-    question: "How do I get started with UnHack SOCaaS?",
+    question: "How do I get started with UnHack?",
     answer:
       "Contact us through our website or sales team for a personalized consultation and demo.",
   },
@@ -77,7 +77,7 @@ export default function FAQs() {
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold">Frequently Asked Questions</h2>
           <p className="mt-2 text-gray-300">
-            Answers to common questions about UnHack SOCaaS.
+            Answers to common questions about UnHack.
           </p>
         </div>
 

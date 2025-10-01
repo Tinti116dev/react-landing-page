@@ -48,7 +48,7 @@ function Footer({ onOpenCookieModal }) {
               href="#start"
               className="px-5 py-2 bg-blue-600 rounded-lg font-semibold text-white hover:bg-blue-700 transition"
             >
-              Start Free Trial
+              Request a Demo
             </a>
             <a
               href="#signup"

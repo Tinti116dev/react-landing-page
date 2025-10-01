@@ -24,7 +24,7 @@ function Hero() {
               href="#start"
               className="px-5 py-3 bg-blue-600 rounded-lg font-semibold text-white hover:bg-blue-700 transition"
             >
-              Start Free Trial
+              Request a Demo
             </a>
             <a
               href="#demo"
