@@ -1,120 +1,184 @@
 // src/pages/Demo.jsx
-import React from "react";
-import demoBg from "../assets/images/Picture3.jpg"; // ✅ adjust filename to match your assets folder
+import { useState } from "react";
 
 export default function Demo() {
+  const [formData, setFormData] = useState({
+    fullName: "",
+    jobTitle: "",
+    companyName: "",
+    companySize: "",
+    industry: "",
+    email: "",
+    phone: "",
+    areasOfInterest: [],
+    challenges: "",
+    comments: "",
+    consent: false,
+  });
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    if (type === "checkbox" && name === "areasOfInterest") {
+      setFormData((prev) => {
+        if (checked) {
+          return { ...prev, areasOfInterest: [...prev.areasOfInterest, value] };
+        } else {
+          return {
+            ...prev,
+            areasOfInterest: prev.areasOfInterest.filter((v) => v !== value),
+          };
+        }
+      });
+    } else if (type === "checkbox") {
+      setFormData({ ...formData, [name]: checked });
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Demo Request Submitted:", formData);
+    alert("Thank you! Your demo request has been submitted.");
+  };
+
   return (
     <div
-      className="relative py-20 px-6"
-      style={{
-        backgroundImage: `url(${demoBg})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
+      className="min-h-screen py-16 px-6 lg:px-20 bg-black bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: "url('/images/demo-bg.jpg')" }} // change path to your actual image
     >
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black/70"></div>
+      <div className="max-w-4xl mx-auto bg-gray-900 bg-opacity-90 shadow-lg rounded-lg p-8 text-white">
+        <h1 className="text-3xl font-bold mb-6 text-center">Request a Demo</h1>
+        <p className="text-gray-300 text-center mb-8">
+          Fill out the form below to schedule your personalized demo with our
+          cybersecurity experts.
+        </p>
 
-      {/* Content */}
-      <div className="relative max-w-3xl mx-auto bg-[#0f172a]/95 p-10 rounded-2xl shadow-lg text-white">
-        <h2 className="text-2xl font-bold text-center mb-8">Request a Demo</h2>
-
-        <form className="space-y-6">
-          {/* Full Name + Job Title */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <label className="block mb-2 text-sm">Full Name *</label>
-              <input
-                type="text"
-                className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-600"
-                required
-              />
-            </div>
-            <div>
-              <label className="block mb-2 text-sm">Job Title / Role *</label>
-              <input
-                type="text"
-                className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-600"
-                required
-              />
-            </div>
-          </div>
-
-          {/* Company Name + Size */}
+        <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Full Name */}
           <div>
-            <label className="block mb-2 text-sm">Company Name *</label>
+            <label className="block font-medium">Full Name *</label>
             <input
               type="text"
-              className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-600"
+              name="fullName"
               required
+              value={formData.fullName}
+              onChange={handleChange}
+              className="w-full border rounded-lg p-2 mt-1 text-black"
             />
           </div>
+
+          {/* Job Title */}
           <div>
-            <label className="block mb-2 text-sm">Company Size</label>
-            <select className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-600">
-              <option>Select...</option>
-              <option>1-50</option>
-              <option>51-200</option>
-              <option>201-1000</option>
-              <option>1000+</option>
+            <label className="block font-medium">Job Title / Role *</label>
+            <input
+              type="text"
+              name="jobTitle"
+              required
+              value={formData.jobTitle}
+              onChange={handleChange}
+              className="w-full border rounded-lg p-2 mt-1 text-black"
+            />
+          </div>
+
+          {/* Company Name */}
+          <div>
+            <label className="block font-medium">Company Name *</label>
+            <input
+              type="text"
+              name="companyName"
+              required
+              value={formData.companyName}
+              onChange={handleChange}
+              className="w-full border rounded-lg p-2 mt-1 text-black"
+            />
+          </div>
+
+          {/* Company Size */}
+          <div>
+            <label className="block font-medium">Company Size</label>
+            <select
+              name="companySize"
+              value={formData.companySize}
+              onChange={handleChange}
+              className="w-full border rounded-lg p-2 mt-1 text-black"
+            >
+              <option value="">Select company size</option>
+              <option value="micro">Micro – 1-9 employees</option>
+              <option value="small">Small – 10-49 employees</option>
+              <option value="medium">Medium – 50-249 employees</option>
+              <option value="large">Large – 250+ employees</option>
             </select>
           </div>
 
           {/* Industry */}
           <div>
-            <label className="block mb-2 text-sm">Industry / Sector *</label>
+            <label className="block font-medium">Industry / Sector</label>
             <select
-              className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-600"
-              required
+              name="industry"
+              value={formData.industry}
+              onChange={handleChange}
+              className="w-full border rounded-lg p-2 mt-1 text-black"
             >
-              <option>Select...</option>
-              <option>Finance</option>
-              <option>Healthcare</option>
-              <option>Education</option>
-              <option>Government</option>
-              <option>Other</option>
+              <option value="">Select an industry</option>
+              <option value="Financial Services">Financial Services</option>
+              <option value="Healthcare">Healthcare</option>
+              <option value="Retail">Retail</option>
+              <option value="Legal">Legal</option>
+              <option value="Government">Government</option>
+              <option value="Technology">Technology</option>
+              <option value="Other">Other</option>
             </select>
           </div>
 
-          {/* Email + Phone */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <label className="block mb-2 text-sm">Email Address *</label>
-              <input
-                type="email"
-                className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-600"
-                required
-              />
-            </div>
-            <div>
-              <label className="block mb-2 text-sm">Phone Number</label>
-              <input
-                type="tel"
-                className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-600"
-              />
-            </div>
+          {/* Email */}
+          <div>
+            <label className="block font-medium">Email Address *</label>
+            <input
+              type="email"
+              name="email"
+              required
+              value={formData.email}
+              onChange={handleChange}
+              className="w-full border rounded-lg p-2 mt-1 text-black"
+            />
+          </div>
+
+          {/* Phone */}
+          <div>
+            <label className="block font-medium">Phone Number</label>
+            <input
+              type="tel"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              className="w-full border rounded-lg p-2 mt-1 text-black"
+            />
           </div>
 
           {/* Areas of Interest */}
           <div>
-            <label className="block mb-3 text-sm">Areas of Interest</label>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
+            <label className="block font-medium">Areas of Interest</label>
+            <div className="grid grid-cols-2 gap-2 mt-2 text-gray-200">
               {[
                 "24/7 Threat Monitoring",
                 "Incident Response",
                 "Threat Intelligence",
                 "Vulnerability Management",
                 "Security Awareness Training",
-                "Forensics & Post-Incident Analysis",
+                "Forensics and Post-Incident Analysis",
                 "Incident Remediation Support",
                 "General Overview / Other",
-              ].map((area, i) => (
-                <label key={i} className="flex items-center gap-2">
+              ].map((item) => (
+                <label key={item} className="flex items-center space-x-2">
                   <input
                     type="checkbox"
-                    className="text-blue-600 focus:ring-blue-600"
+                    name="areasOfInterest"
+                    value={item}
+                    checked={formData.areasOfInterest.includes(item)}
+                    onChange={handleChange}
                   />
-                  {area}
+                  <span>{item}</span>
                 </label>
               ))}
             </div>
@@ -122,52 +186,69 @@ export default function Demo() {
 
           {/* Challenges */}
           <div>
-            <label className="block mb-2 text-sm">
+            <label className="block font-medium">
               Current Cybersecurity Challenges or Goals
             </label>
             <textarea
-              rows="3"
-              className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-600"
-            ></textarea>
+              name="challenges"
+              value={formData.challenges}
+              onChange={handleChange}
+              className="w-full border rounded-lg p-2 mt-1 text-black"
+              rows={3}
+            />
           </div>
 
           {/* Additional Comments */}
           <div>
-            <label className="block mb-2 text-sm">
+            <label className="block font-medium">
               Additional Comments or Questions
             </label>
             <textarea
-              rows="3"
-              className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-600"
-            ></textarea>
+              name="comments"
+              value={formData.comments}
+              onChange={handleChange}
+              className="w-full border rounded-lg p-2 mt-1 text-black"
+              rows={3}
+            />
           </div>
 
-          {/* Terms */}
-          <div className="flex items-start gap-2 text-sm">
+          {/* Consent */}
+          <div className="flex items-center">
             <input
               type="checkbox"
+              name="consent"
+              checked={formData.consent}
+              onChange={handleChange}
               required
-              className="mt-1 text-blue-600 focus:ring-blue-600"
+              className="mr-2"
             />
-            <p>
+            <span className="text-sm">
               I agree to the{" "}
-              <a href="/privacy" className="text-blue-400 underline">
+              <a
+                href="/privacy-policy"
+                className="text-blue-400 underline"
+                target="_blank"
+              >
                 Privacy Policy
               </a>{" "}
               and{" "}
-              <a href="/terms" className="text-blue-400 underline">
-                Terms
+              <a
+                href="/terms-and-conditions"
+                className="text-blue-400 underline"
+                target="_blank"
+              >
+                Terms & Conditions
               </a>
               .
-            </p>
+            </span>
           </div>
 
           {/* Submit */}
           <button
             type="submit"
-            className="w-full bg-blue-600 hover:bg-blue-700 py-3 rounded-lg font-semibold transition"
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg"
           >
-            🚀 Request Demo
+            Submit Demo Request
           </button>
         </form>
       </div>

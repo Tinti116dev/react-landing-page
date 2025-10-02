@@ -14,6 +14,7 @@ import FAQs from "./pages/FAQs";
 import Contacts from "./pages/Contacts";
 import TermsAndConditions from "./pages/TermsAndConditions";
 import ScrollToTopButton from "./components/ScrollToTopButton";
+import CookieButton from "./components/CookieButton";
 
 function App() {
   const [showCookieModal, setShowCookieModal] = useState(false);
@@ -40,6 +41,9 @@ function App() {
       
       {/* Footer with cookie modal trigger */}
       <Footer onOpenCookieModal={handleOpenCookieModal} />
+
+      {/* Floating Cookie Button */}
+      <CookieButton onClick={handleOpenCookieModal} />
 
       {/* Cookie Modal */}
       <CookieModal

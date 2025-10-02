@@ -16,7 +16,7 @@ const Navbar = () => {
           <img
             src="/logo.png"
             alt="Logo"
-            className="h-8 w-auto cursor-pointer"
+            className="h-11 w-auto cursor-pointer"
           />
         </Link>
 
@@ -35,7 +35,7 @@ const Navbar = () => {
             FAQs
           </Link>
           <Link to="/contacts" className="hover:text-blue-400">
-            Contacts
+            Contact
           </Link>
         </div>
 

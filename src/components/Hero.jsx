@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import dashboardImg from "../assets/images/dashboard.jpg"; // adjust path if needed
 
 function Hero() {
@@ -21,12 +22,12 @@ function Hero() {
 
           {/* Buttons */}
           <div className="flex space-x-4">
-            <a
-              href="/my-landing-page/src/pages/Demo.jsx"
+            <Link
+              to="/demo"
               className="px-5 py-3 bg-blue-600 rounded-lg font-semibold text-white hover:bg-blue-700 transition"
             >
               Request a Demo
-            </a>
+            </Link>
             <a
               href="/my-landing-page/src/pages/Features.jsx"
               className="px-5 py-3 bg-blue-600 rounded-lg font-semibold text-white hover:bg-blue-700 transition"
