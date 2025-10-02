@@ -12,6 +12,8 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Demo from "./pages/Demo";
 import FAQs from "./pages/FAQs";
 import Contacts from "./pages/Contacts";
+import TermsAndConditions from "./pages/TermsAndConditions";
+import ScrollToTopButton from "./components/ScrollToTopButton";
 
 function App() {
   const [showCookieModal, setShowCookieModal] = useState(false);
@@ -32,15 +34,21 @@ function App() {
           <Route path="/demo" element={<Demo />} />
           <Route path="/faqs" element={<FAQs />} />
           <Route path="/contacts" element={<Contacts />} />
+          <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
         </Routes>
       </div>
-      {/* Pass down the modal open function */}
+      
+      {/* Footer with cookie modal trigger */}
       <Footer onOpenCookieModal={handleOpenCookieModal} />
-      {/* Control modal visibility */}
+
+      {/* Cookie Modal */}
       <CookieModal
-        showModal={showCookieModal}
-        setShowModal={setShowCookieModal}
+        isOpen={showCookieModal}
+        onClose={() => setShowCookieModal(false)}
       />
+
+      {/* Scroll To Top Button */}
+      <ScrollToTopButton />
     </Router>
   );
 }

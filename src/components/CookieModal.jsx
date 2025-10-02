@@ -1,152 +1,169 @@
+// src/components/CookieModal.jsx
 import React, { useState } from "react";
 
-const CookieModal = ({ showModal, setShowModal }) => {
+function CookieModal({ isOpen, onClose }) {
   const [performance, setPerformance] = useState(false);
   const [functional, setFunctional] = useState(false);
   const [marketing, setMarketing] = useState(false);
 
-  const handleAcceptAll = () => {
-    setPerformance(true);
-    setFunctional(true);
-    setMarketing(true);
-    setShowModal(false);
-  };
+  if (!isOpen) return null;
 
   const handleRejectAll = () => {
     setPerformance(false);
     setFunctional(false);
     setMarketing(false);
-    setShowModal(false);
+    onClose();
   };
 
-  const handleSave = () => {
-    setShowModal(false);
+  const handleAcceptAll = () => {
+    setPerformance(true);
+    setFunctional(true);
+    setMarketing(true);
+    onClose();
   };
 
-  if (!showModal) return null;
+  const handleSavePreferences = () => {
+    // here you could store in localStorage or send to backend
+    onClose();
+  };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 z-50">
-      <div className="relative bg-white rounded-2xl shadow-2xl max-w-2xl w-full p-6">
-        {/* ❌ Close Button */}
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50">
+      <div className="bg-gray-900 text-white rounded-2xl shadow-2xl max-w-2xl w-full p-6 relative transform transition-all duration-300 scale-100">
+        {/* Close Button */}
         <button
-          onClick={() => setShowModal(false)}
-          className="absolute top-3 right-3 text-gray-500 hover:text-gray-700 text-xl font-bold"
+          onClick={onClose}
+          className="absolute top-4 right-4 text-gray-400 hover:text-white text-xl"
         >
-          ✕
+          &times;
         </button>
 
         {/* Header */}
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">
-          Cookie Preferences
-        </h2>
-        <p className="text-gray-600 mb-6">
+        <h2 className="text-2xl font-bold mb-4">Cookie Preferences</h2>
+        <p className="text-gray-300 mb-6">Manage Your Cookie Settings</p>
+        <p className="text-gray-400 mb-8 text-sm leading-relaxed">
           We use cookies and similar tracking technologies to enhance your
-          experience on our website, improve functionality, analyze traffic, and
-          provide relevant content. You can customize which types of cookies you
-          allow below.
+          experience on our website, improve functionality, analyze traffic,
+          and provide relevant content. You can customize which types of
+          cookies you allow below.
         </p>
 
-        {/* Essential Cookies (always ON, greyed out) */}
-        <div className="flex justify-between items-center py-3 border-b">
-  <div>
-    <h3 className="font-semibold text-gray-900">Essential Cookies</h3>
-    <p className="text-sm text-gray-600">
-      Necessary for the website to function properly. These cookies
-      cannot be disabled.
-    </p>
-  </div>
-  <label className="relative inline-flex items-center cursor-not-allowed opacity-80">
-    <input type="checkbox" checked readOnly disabled className="sr-only" />
-    <div className="w-11 h-6 bg-blue-500 rounded-full after:content-[''] after:absolute after:top-0.5 after:left-[22px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5"></div>
-  </label>
-</div>
-
-
-        {/* Performance Cookies */}
-        <div className="flex justify-between items-center py-3 border-b">
-          <div>
-            <h3 className="font-semibold text-gray-900">Performance Cookies</h3>
-            <p className="text-sm text-gray-600">
-              Help us understand how you interact with our website, so we can
-              improve your experience.
-            </p>
+        {/* Cookie Categories */}
+        <div className="space-y-5">
+          {/* Essential Cookies */}
+          <div className="flex justify-between items-center">
+            <div>
+              <h3 className="font-semibold">Essential Cookies</h3>
+              <p className="text-gray-400 text-sm">
+                Necessary for the website to function properly. These cookies
+                cannot be disabled.
+              </p>
+            </div>
+            <div className="relative">
+              <div className="w-12 h-6 bg-blue-600 rounded-full flex items-center px-1 cursor-not-allowed opacity-80">
+                <div className="w-4 h-4 bg-white rounded-full translate-x-6" />
+              </div>
+            </div>
           </div>
-          <label className="relative inline-flex items-center cursor-pointer">
-            <input
-              type="checkbox"
-              checked={performance}
-              onChange={() => setPerformance(!performance)}
-              className="sr-only peer"
-            />
-            <div className="w-11 h-6 bg-gray-300 rounded-full peer-checked:bg-blue-500 after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full"></div>
-          </label>
+
+          {/* Performance Cookies */}
+          <div className="flex justify-between items-center">
+            <div>
+              <h3 className="font-semibold">Performance Cookies</h3>
+              <p className="text-gray-400 text-sm">
+                Help us understand how you interact with our site.
+              </p>
+            </div>
+            <button
+              onClick={() => setPerformance(!performance)}
+              className={`w-12 h-6 rounded-full flex items-center px-1 transition ${
+                performance ? "bg-blue-600" : "bg-gray-600"
+              }`}
+            >
+              <div
+                className={`w-4 h-4 bg-white rounded-full transform transition ${
+                  performance ? "translate-x-6" : "translate-x-0"
+                }`}
+              />
+            </button>
+          </div>
+
+          {/* Functional Cookies */}
+          <div className="flex justify-between items-center">
+            <div>
+              <h3 className="font-semibold">Functional Cookies</h3>
+              <p className="text-gray-400 text-sm">
+                Remember your preferences for a personalized experience.
+              </p>
+            </div>
+            <button
+              onClick={() => setFunctional(!functional)}
+              className={`w-12 h-6 rounded-full flex items-center px-1 transition ${
+                functional ? "bg-blue-600" : "bg-gray-600"
+              }`}
+            >
+              <div
+                className={`w-4 h-4 bg-white rounded-full transform transition ${
+                  functional ? "translate-x-6" : "translate-x-0"
+                }`}
+              />
+            </button>
+          </div>
+
+          {/* Marketing Cookies */}
+          <div className="flex justify-between items-center">
+            <div>
+              <h3 className="font-semibold">Marketing Cookies</h3>
+              <p className="text-gray-400 text-sm">
+                Track browsing habits for relevant advertising.
+              </p>
+            </div>
+            <button
+              onClick={() => setMarketing(!marketing)}
+              className={`w-12 h-6 rounded-full flex items-center px-1 transition ${
+                marketing ? "bg-blue-600" : "bg-gray-600"
+              }`}
+            >
+              <div
+                className={`w-4 h-4 bg-white rounded-full transform transition ${
+                  marketing ? "translate-x-6" : "translate-x-0"
+                }`}
+              />
+            </button>
+          </div>
         </div>
 
-        {/* Functional Cookies */}
-        <div className="flex justify-between items-center py-3 border-b">
-          <div>
-            <h3 className="font-semibold text-gray-900">Functional Cookies</h3>
-            <p className="text-sm text-gray-600">
-              Remember your preferences and settings for a personalized
-              experience.
-            </p>
-          </div>
-          <label className="relative inline-flex items-center cursor-pointer">
-            <input
-              type="checkbox"
-              checked={functional}
-              onChange={() => setFunctional(!functional)}
-              className="sr-only peer"
-            />
-            <div className="w-11 h-6 bg-gray-300 rounded-full peer-checked:bg-blue-500 after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full"></div>
-          </label>
+        {/* How to update preferences */}
+        <div className="mt-8 text-gray-400 text-sm leading-relaxed">
+          <p>• Use the toggles above to enable or disable specific cookie categories.</p>
+          <p>• Your selections will be saved and applied immediately.</p>
+          <p>• You can change your preferences anytime via the footer link.</p>
         </div>
 
-        {/* Marketing Cookies */}
-        <div className="flex justify-between items-center py-3">
-          <div>
-            <h3 className="font-semibold text-gray-900">Marketing Cookies</h3>
-            <p className="text-sm text-gray-600">
-              Track your browsing habits for relevant advertising and marketing
-              campaigns.
-            </p>
-          </div>
-          <label className="relative inline-flex items-center cursor-pointer">
-            <input
-              type="checkbox"
-              checked={marketing}
-              onChange={() => setMarketing(!marketing)}
-              className="sr-only peer"
-            />
-            <div className="w-11 h-6 bg-gray-300 rounded-full peer-checked:bg-blue-500 after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full"></div>
-          </label>
-        </div>
-
-        {/* Buttons */}
-        <div className="flex justify-end gap-3 mt-6">
+        {/* Action Buttons */}
+        <div className="mt-8 flex justify-end space-x-4">
           <button
-            onClick={handleAcceptAll}
-            className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg"
+            onClick={handleRejectAll}
+            className="px-4 py-2 bg-blue-700 hover:bg-blue-600 rounded-lg text-sm font-medium"
           >
-            Accept All
+            Reject All
           </button>
           <button
-            onClick={handleSave}
-            className="bg-gray-300 hover:bg-gray-400 text-gray-900 px-4 py-2 rounded-lg"
+            onClick={handleSavePreferences}
+            className="px-4 py-2 bg-grey-600 hover:bg-blue-700 rounded-lg text-sm font-medium"
           >
             Save Preferences
           </button>
           <button
-            onClick={handleRejectAll}
-            className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg"
+            onClick={handleAcceptAll}
+            className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg text-sm font-medium"
           >
-            Reject All
+            Accept All
           </button>
         </div>
       </div>
     </div>
   );
-};
+}
 
 export default CookieModal;

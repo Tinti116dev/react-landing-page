@@ -8,7 +8,7 @@ import {
 } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
-function Footer({ onOpenCookieModal }) {
+function Footer() {
   return (
     <footer className="bg-black text-gray-300 pt-12 pb-6">
       <div className="max-w-7xl mx-auto px-6">
@@ -28,10 +28,16 @@ function Footer({ onOpenCookieModal }) {
 
           {/* Center: Social Media */}
           <div className="flex justify-center space-x-6 text-white">
-            <a href="https://www.facebook.com/profile.php?id=61580287678230" className="hover:text-blue-400">
+            <a
+              href="https://www.facebook.com/profile.php?id=61580287678230"
+              className="hover:text-blue-400"
+            >
               <FaFacebookF size={20} />
             </a>
-            <a href="https://x.com/UnHack_Africa" className="hover:text-white">
+            <a
+              href="https://x.com/UnHack_Africa"
+              className="hover:text-white"
+            >
               <FaXTwitter size={20} />
             </a>
             <a href="+263783269827" className="hover:text-green-400">
@@ -63,21 +69,14 @@ function Footer({ onOpenCookieModal }) {
         <div className="border-t border-gray-700 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
           <div className="flex space-x-6 mb-4 md:mb-0">
             <Link to="/privacy-policy" className="hover:text-blue-400">
-  Privacy Policy
-</Link>
-            {/* Call the function passed down */}
-<a
-  href="/cookie-preference"
-  onClick={(e) => {
-    e.preventDefault();
-    if (typeof onOpenCookieModal === "function") onOpenCookieModal();
-  }}
-  className="hover:text-blue-400"
->
-  Cookie Policy
-</a>
+              Privacy Policy
+            </Link>
 
+            <Link to="/terms-and-conditions" className="hover:text-blue-400">
+              Terms and Conditions
+            </Link>
           </div>
+
           <p>© {new Date().getFullYear()} UnHack. All rights reserved.</p>
         </div>
       </div>
