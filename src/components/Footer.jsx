@@ -50,12 +50,12 @@ function Footer() {
 
           {/* Right: Buttons */}
           <div className="flex justify-center md:justify-end space-x-4">
-            <a
-              href="#start"
+            <Link
+              to="/demo"
               className="px-5 py-2 bg-blue-600 rounded-lg font-semibold text-white hover:bg-blue-700 transition"
             >
               Request a Demo
-            </a>
+            </Link>
             <a
               href="#signup"
               className="px-5 py-2 bg-blue-600 rounded-lg font-semibold text-white hover:bg-blue-700 transition"

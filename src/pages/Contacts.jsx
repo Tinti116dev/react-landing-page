@@ -7,11 +7,17 @@ import {
   FaLinkedinIn,
 } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import bgImage from "../assets/images/Picture5.jpg";
 
 function Contacts() {
   return (
-    <div className="bg-black text-white min-h-screen pt-20 pb-16">
-      <div className="max-w-5xl mx-auto px-6">
+    <div
+      className="relative bg-cover bg-center min-h-screen pt-20 pb-16"
+      style={{ backgroundImage: `url(${bgImage})` }}
+    >
+      {/* Optional: Overlay for better readability */}
+      <div className="absolute inset-0 bg-black opacity-60 z-0"></div>
+      <div className="relative z-10 max-w-5xl mx-auto px-6">
         {/* Header */}
         <h1 className="text-4xl font-bold mb-6 text-center">Contact Us</h1>
         <p className="text-gray-300 text-center max-w-2xl mx-auto mb-12">
@@ -22,16 +28,18 @@ function Contacts() {
 
         {/* Contact Info */}
         <div className="bg-gray-900 rounded-xl p-8 mb-12 shadow-lg">
-          <h2 className="text-2xl font-semibold mb-6">Get in Touch</h2>
-          <div className="space-y-4">
-            <p className="flex items-center">
-              <FaWhatsapp className="text-green-400 mr-3" size={20} />
-              <span>+263783269827</span>
-            </p>
-            <p>
-              <span className="font-semibold">Email:</span>{" "}
-              support@unhack.africa
-            </p>
+          <div className="text-center mb-8">
+            <h2 className="text-2xl font-semibold mb-6">Get in Touch</h2>
+            <div className="space-y-4">
+              <p className="flex items-center justify-center">
+                <FaWhatsapp className="text-green-400 mr-3" size={20} />
+                <span>+263783269827</span>
+              </p>
+              <p>
+                <span className="font-semibold">Email:</span>{" "}
+                support@unhack.africa
+              </p>
+            </div>
           </div>
         </div>
 

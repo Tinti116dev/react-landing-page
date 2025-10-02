@@ -28,12 +28,12 @@ function Hero() {
             >
               Request a Demo
             </Link>
-            <a
-              href="/my-landing-page/src/pages/Features.jsx"
+            <Link
+              to="/features"
               className="px-5 py-3 bg-blue-600 rounded-lg font-semibold text-white hover:bg-blue-700 transition"
             >
               Explore Features
-            </a>
+            </Link>
           </div>
         </div>
 

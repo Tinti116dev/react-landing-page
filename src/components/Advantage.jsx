@@ -1,11 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Advantage() {
   return (
     <section className="pt-28 pb-16 text-white">
       <div className="max-w-4xl mx-auto px-6">
         {/* Heading */}
-        <h2 className="text-4xl font-bold mb-6">Our Advantage</h2>
+        <h2 className="text-4xl font-bold mb-6 text-center">Our Advantage</h2>
 
         {/* Paragraph */}
         <p className="text-gray-300 text-lg leading-relaxed mb-8">
@@ -20,12 +21,12 @@ function Advantage() {
 
         {/* CTA Button */}
         <div className="flex justify-center">
-          <a
-            href="#contact"
+          <Link
+            to="/demo"
             className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-300"
           >
             Request A Demo
-          </a>
+          </Link>
         </div>
       </div>
     </section>

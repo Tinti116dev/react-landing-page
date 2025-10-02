@@ -143,10 +143,10 @@ function CookieModal({ isOpen, onClose }) {
         {/* Action Buttons */}
         <div className="mt-8 flex justify-end space-x-4">
           <button
-            onClick={handleRejectAll}
-            className="px-4 py-2 bg-blue-700 hover:bg-blue-600 rounded-lg text-sm font-medium"
+            onClick={handleAcceptAll}
+            className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg text-sm font-medium"
           >
-            Reject All
+            Accept All
           </button>
           <button
             onClick={handleSavePreferences}
@@ -155,10 +155,10 @@ function CookieModal({ isOpen, onClose }) {
             Save Preferences
           </button>
           <button
-            onClick={handleAcceptAll}
-            className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg text-sm font-medium"
+            onClick={handleRejectAll}
+            className="px-4 py-2 bg-red-700 hover:bg-red-600 rounded-lg text-sm font-medium"
           >
-            Accept All
+            Reject All
           </button>
         </div>
       </div>
