@@ -39,7 +39,11 @@ function WhyChooseUs() {
   ];
 
   return (
+<<<<<<< HEAD
     <section className="pt-28 pb-16 text-white">
+=======
+    <section id="why-choose-us" className="py-24 bg-black text-white">
+>>>>>>> c1f267c04fa0fee5daf29c6c3cf59591a8484c4a
       <div className="max-w-7xl mx-auto px-6 text-center">
         {/* Section Header */}
         <h2 className="text-4xl font-bold mb-4">Why Choose Us?</h2>

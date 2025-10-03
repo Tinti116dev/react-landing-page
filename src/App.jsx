@@ -42,9 +42,6 @@ function App() {
       {/* Footer with cookie modal trigger */}
       <Footer onOpenCookieModal={handleOpenCookieModal} />
 
-      {/* Floating Cookie Button */}
-      <CookieButton onClick={handleOpenCookieModal} />
-
       {/* Cookie Modal */}
       <CookieModal
         isOpen={showCookieModal}

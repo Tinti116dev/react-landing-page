@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 
 function Advantage() {
   return (
-    <section className="pt-28 pb-16 text-white">
+    <section id="advantage" className="py-24 bg-black text-white text-center">
       <div className="max-w-4xl mx-auto px-6">
         {/* Heading */}
-        <h2 className="text-4xl font-bold mb-6 text-center">Our Advantage</h2>
+        <h2 className="text-4xl font-bold mb-6">Our Advantage</h2>
 
         {/* Paragraph */}
         <p className="text-gray-300 text-lg leading-relaxed mb-8">
